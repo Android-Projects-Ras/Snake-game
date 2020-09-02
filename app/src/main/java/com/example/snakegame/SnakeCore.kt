@@ -5,16 +5,17 @@ import kotlinx.android.synthetic.main.activity_main.*
 
 object SnakeCore {
 
-    var nextMove:() -> Unit = {}
+    var nextMove: () -> Unit = {}
+    var isPlay = true
 
     fun startTheGame() {
-        Thread(Runnable {
+        Thread {
             while (true) {
                 Thread.sleep(500)
-                nextMove()
-
-
+                if (isPlay) {
+                    nextMove()
+                }
             }
-        }).start()
+        }.start()
     }
 }
